@@ -15,8 +15,8 @@ int main(int argc, char *argv[]) {
                                                                     //point to shared memory
 
     // Initialize semaphores
-    sem_init(&(producer->fillUnit ) , 1, 0);
-    sem_init(&(producer->emptyUnit) , 1, BUFFER_SIZE);
+    sem_init(&producer->fillUnit  , 1, 0);
+    sem_init(&producer->emptyUnit , 1, BUFFER_SIZE);
 
     // empty shared buffer setting elements to 0
     for(int i = 0; i < BUFFER_SIZE; ++i) {
