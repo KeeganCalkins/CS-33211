@@ -23,8 +23,9 @@ Then run code as shown below
 
 ## Example
 
-The producer and consumer will iterate 10 times in this case. Once the 10th occurrence takes place you will CTRL + C to stop the processes. <br>
-This is the output from running the program:
+The producer and consumer will iterate 10 times in this case. Once the 10th occurrence takes place you will CTRL + C to stop the processes.<br>
+This is the output from running the program:<br>
+(Except for #nth to show each iteration)
 ```
 [1] 747038
 [2] 747039
