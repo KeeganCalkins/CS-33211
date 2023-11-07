@@ -6,7 +6,7 @@ The producer generates items and puts items onto the table. The consumer will pi
 
 For this assignment I chose the maximum number of items allowed to be produced before consumption is 2. This is shown by producing until variable itemCount reaches 2 which signifies that there is the maximum number of items stored. This tells the consumer that they are able to consume as either element 0 or 1 of the shared memory buffer is full. This will iterate a total of 10 times before ending the program.
 
-Some issues that I overcame in this assignment were the use of memory sharing. This was especially difficult at first when using shm_open(). I also had troubles with using sem_wait(). I kept allowing for the consumer and producer to call this function when the buffer was full causing an immediate consumption as the producer had produced. This was easily fixed by changing the while loop to busy wait as I hadn't previously when the buffer was full.
+Some issues that I overcame in this assignment were the use of memory sharing. This was especially difficult at first when using shm_open(). I also had troubles with using sem_wait(), I kept allowing for the consumer and producer to call this function when the buffer was full causing an immediate consumption as the producer had produced. This was easily fixed by changing the while loop to busy wait as I hadn't previously when the buffer was full.
 
 ## Usage
 How to use the Producer Consumer program
