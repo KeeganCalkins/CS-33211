@@ -5,12 +5,12 @@
 
 int main(int argc, char *argv[]) {
     srand(time(NULL)); 
-    struct table *producer;
     
     int fd = shm_open("/Shared_mem", O_CREAT | O_RDWR, 0600); // open shared memory
     
     ftruncate(fd, sizeof(struct table)); // will resize shared memory
-
+    
+    struct table *producer;
     producer = mmap(0, sizeof(struct table), PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);               
                                                                     //point to shared memory
 
