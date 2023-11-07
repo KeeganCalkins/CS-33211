@@ -24,7 +24,7 @@ Then run code as shown below
 ## Example
 
 The producer and consumer will iterate 10 times in this case. Once the 10th occurrence takes place you will CTRL + C to stop the processes.
-
+This is the output from running the program:
 ```
 [1] 747038
 [2] 747039
