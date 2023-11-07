@@ -19,7 +19,7 @@ gcc consumer.c -pthread -lrt -o consumer
 
 The producer and consumer will iterate 10 times in this case. Once the 10th occurrence takes place you will CTRL + C to stop the processes.
 
-You can see that the maximum number of items I allowed to be produced before consumption is 2. This is shown by producing until variable itemCount reaches 2 which signifies that there is the maximum number of items stored. This tells the consumer that they are able to consume as either element 0 or 1 is full.
+You can see that the maximum number of items I allowed to be produced before consumption is 2. This is shown by producing until variable itemCount reaches 2 which signifies that there is the maximum number of items stored. This tells the consumer that they are able to consume as either element 0 or 1 of the shared memory buffer is full.
 
 ```
 [3] 341359
