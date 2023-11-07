@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
             sem_wait(&producer->emptyUnit);
         int itemVal;
         for (int i = 0; i < BUFFER_SIZE; ++i) { // produces items directly
+            itemVal = rand() % 100 + 1; // collects a random value(1-100) for the produced item
             producer->buffer[i] = itemVal; // sets item to random value
             printf("produced %d\n", itemVal);
         }
