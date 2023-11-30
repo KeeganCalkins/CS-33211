@@ -61,4 +61,25 @@ int main() {
 
     getInput(allocation, max, available, processes, resources);
 
+    std::cout << "\nAllocation Resources\n";
+    for(int i = 0; i < processes; i++) {
+        for(int j = 0; j < resources; j++) {
+            std::cout << allocation[i][j] << " ";
+        }
+        std::cout << '\n';
+    }
+
+    std::cout << "\nMax Resources\n";
+    for(int i = 0; i < processes; i++) {
+        for(int j = 0; j < resources; j++) {
+            std::cout << max[i][j] << " ";
+        }
+        std::cout << '\n';
+    }
+
+    std::cout << "\nAvailable Resources\n";
+    for(int i = 0; i < resources; i++) {
+        std::cout << available[i] << " ";
+    }
+    std::cout << "\n\n";
 }
