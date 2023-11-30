@@ -143,7 +143,7 @@ int main() {
         for(int i = 0; i < processes - 1; i++) {
             std::cout << " P" << ordered[i] << " to";
         }
-        std::cout << " P" << ordered[processes-1] << std::endl;
+        std::cout << " P" << ordered[processes-1] << std::endl; //seperate to not add "to" at the end
     }
     return 0;
 }
