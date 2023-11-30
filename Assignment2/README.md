@@ -13,11 +13,11 @@ How to use the Banker's-Algorithm program
 
 Compile code as shown below
 ```
-g++ banker.cpp -o banker
+g++ banker.cpp -o bankers
 ```
 Then run code as shown below
 ```
-./banker
+./bankers
 ```
 
 ## Example
