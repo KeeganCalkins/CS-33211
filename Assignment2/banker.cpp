@@ -54,14 +54,14 @@ void getInput(std::vector<std::vector<int>> &allocation, std::vector<std::vector
 }
 
 int main() {
-    int processes, resources;
-    std::vector< std::vector<int> > allocation;
+    int processes, resources; // holds number of processes/resources 
+    std::vector< std::vector<int> > allocation;  
     std::vector< std::vector<int> > max;
     std::vector<int> available;
 
-    getInput(allocation, max, available, processes, resources);
+    getInput(allocation, max, available, processes, resources); // invoke function gathering data from input file
 
-    std::cout << "\nAllocation Resources\n";
+    std::cout << "\nAllocation Resources\n"; // output Allocation table values
     for(int i = 0; i < processes; i++) {
         for(int j = 0; j < resources; j++) {
             std::cout << allocation[i][j] << " ";
@@ -69,7 +69,7 @@ int main() {
         std::cout << '\n';
     }
 
-    std::cout << "\nMax Resources\n";
+    std::cout << "\nMax Resources\n"; // output Max table values
     for(int i = 0; i < processes; i++) {
         for(int j = 0; j < resources; j++) {
             std::cout << max[i][j] << " ";
@@ -77,9 +77,73 @@ int main() {
         std::cout << '\n';
     }
 
-    std::cout << "\nAvailable Resources\n";
+    std::cout << "\nAvailable Resources\n"; // output available resource values
     for(int i = 0; i < resources; i++) {
         std::cout << available[i] << " ";
     }
     std::cout << "\n\n";
+
+    int finished[processes]; // vector holding finished processes
+    int ordered[processes]; // vector holding safe sequence order
+    int needed[processes][resources]; // vector holding needed resources
+
+    int proIt = 0; // process iterator
+
+    for(int i = 0; i < processes; i++) {
+        finished[i] = 0;
+    }
+
+    for(int i = 0; i < processes; i++) { // find needed resource values
+        for(int j = 0; j < resources; j++) {
+            needed[i][j] = max[i][j] - allocation[i][j];
+        }
+    }
+
+    std::cout << "Needed Resources\n"; // output needed resource values
+    for(int i = 0; i < processes; i++) {
+        for(int j = 0; j < resources; j++) {
+            std::cout << needed[i][j] << " ";
+        }
+        std::cout << '\n';
+    }
+    std::cout << "\n";
+
+    for(int i = 0; i < processes; i++) { // iterate through each process
+        for(int j = 0; j < processes; j++) { // find position in sequence through processes
+            if(finished[j] == 0) {
+                int flag = 0; // flag 0 as false when to define processes position in sequence
+            
+                for(int k = 0; k < resources; k++) { 
+                    if(needed[j][k] > available[k]) { // sets flag to 1 or true when needed is greater
+                        flag = 1;                     // than the available value
+                        break;
+                    }
+                }
+                if (flag == 0) {
+                    ordered[proIt++] = j; // adds the processes position to the ordered sequence
+                    for(int l = 0; l < resources; l++) {
+                        available[l] += allocation[j][l];
+                    }
+                    finished[j] = 1; // finishes the specified process
+                }
+            }
+        }
+    }
+    int flag = 1;
+    for(int i = 0; i < processes; i++) { // if not finished then the sequence is unsafe and flag set to 0
+        if(finished[i] == 0) {
+            flag = 0;
+            std::cout << "Sequence is unsafe\n";
+            break;
+        }
+    }
+
+    if (flag == 1) { // if finished, then print the safe sequence in the correct order
+        std::cout << "Safe sequence: \n";
+        for(int i = 0; i < processes - 1; i++) {
+            std::cout << " P" << ordered[i] << " to";
+        }
+        std::cout << " P" << ordered[processes-1] << std::endl;
+    }
+    return 0;
 }
