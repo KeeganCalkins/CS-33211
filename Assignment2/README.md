@@ -3,13 +3,10 @@ A very popular algorithm used for deadlock avoidance.
 
 ## Problem Explanation
 Considering a system with five processes P0 through P4 and three resources of type A, B, C. Resource type A has 10 instances, B has 5 instances and type C has 7 instances. Suppose at time t0 following snapshot of the system has been taken: <br> <br>
-   Alloc.   Max     Available <br>
-   A B C    A B C   A B C     <br>
-p0 0 1 0	7 5 3	3 3 2     <br>
-p1 2 0 0	3 2 2	          <br>
-p2 3 0 2	9 0 2	          <br>
-p3 2 1 1	2 2 2	          <br>
-p4 0 0 2	4 3 3	          <br>
+
+![image](image.png) <br> <br>
+
+Implement the Banker’s algorithm to answer the following question： Is the system in a safe state? If Yes, then what is the safe sequence?
 
 ## Usage
 How to use the Banker's-Algorithm program
